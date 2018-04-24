@@ -1,0 +1,6 @@
+Each volume file is the raw byte data stored in row-major order. 
+Each file is a cube, and the dimension is given in the filename.
+I.E. foot_8_256.raw contains 256*256*256 8bit values
+     neghip_8_64.raw contains 64*64*64 8bit values
+
+    

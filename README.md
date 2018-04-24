@@ -13,7 +13,8 @@ The volume renderer skeleton is part of the course [ECS 277] Advanced Visualizat
 
 ## Compile and Execute
 
+In the `src` folder:
 ```
 make
-./raycaster fuel_8_64.raw 64 64 64
+./raycaster ../volumes/fuel_8_64.raw 64 64 64
 ```
