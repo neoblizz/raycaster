@@ -180,7 +180,7 @@ int vrc_render(float *out_rgba)
     //note this probably won't work in os x, unless the latests
     //versions of clang support it, i'll have to check and update
     //the code
-//#pragma omp parallel for
+    // #pragma omp parallel for
     for(int y = 0; y < camera->frame_py; y++){
         for(int x = 0; x < camera->frame_px;x++){
             //get inex into output array

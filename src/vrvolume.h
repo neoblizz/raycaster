@@ -7,7 +7,7 @@
 //and will be logically or'd together
 //i.e. vol|interp == VRV_UINT8|IT_NEAREST
 enum VOL_T {VRV_UINT8=0};
-enum VINTERP_T {VI_NEAREST=1<<8};
+enum VINTERP_T {VI_NEAREST=1<<8/*, VI_LINEAR=1<<8*/};
 
 
 /***NOTES****/

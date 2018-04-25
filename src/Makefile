@@ -7,14 +7,14 @@ GLLIB := -framework OpenGL -framework GLUT
 #windows (lookup a glut tutorial???)
 
 #debug
-CCFLAGS := -g
+CCFLAGS := -g # -Xpreprocessor -fopenmp -lomp
 #Optomized
 #note openmp might not work in os x
 #CCFLAGS := -O3 -fopenmp -pthreads
 
 
-INCDIR := -I/opt/local/include
-LDLIBS := $(GLLIB) -L/opt/local/lib `libpng-config --ldflags`
+INCDIR := -I/opt/local/include # -I/usr/local/opt/libomp/include
+LDLIBS := $(GLLIB) -L/opt/local/lib `libpng-config --ldflags` # -L/usr/local/opt/libomp/lib
 
 TARGET = raycaster
 OBJS = ray.o volraycaster.o glut_viewer.o  camera.o vrtransfer.o vrlight.o vrvolume.o
@@ -38,4 +38,3 @@ $(TARGET): $(OBJS)
 
 clean:
 	rm -rf $(OBJS) $(TARGET)
-

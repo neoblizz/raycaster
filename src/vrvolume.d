@@ -25,4 +25,5 @@ vrvolume.o: vrvolume.c vrvolume.h common.h glm/glm.hpp \
   glm/trigonometric.hpp glm/detail/func_trigonometric.inl \
   glm/packing.hpp glm/detail/func_packing.inl glm/detail/type_half.hpp \
   glm/detail/type_half.inl glm/integer.hpp glm/detail/func_integer.inl \
-  glm/detail/../ext/vec1.hpp glm/detail/../ext/../detail/type_vec1.inl
+  glm/detail/../ext/vec1.hpp glm/detail/../ext/../detail/type_vec1.inl \
+  interpolate.h
