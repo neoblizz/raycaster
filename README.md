@@ -18,3 +18,9 @@ In the `src` folder:
 make
 ./raycaster ../volumes/fuel_8_64.raw 64 64 64
 ```
+
+## Nearest, Linear & Cubic
+
+![Nearest](https://github.com/neoblizz/raycaster/blob/master/images/fuel_sample.png)
+![Linear](https://github.com/neoblizz/raycaster/blob/master/images/fuel_linear_interp.png)
+![Cubic](https://github.com/neoblizz/raycaster/blob/master/images/fuel_cubic.png)
