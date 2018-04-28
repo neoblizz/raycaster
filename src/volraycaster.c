@@ -7,7 +7,8 @@
 //this just used for the simple ray caster that intersects
 //a dense part of the volume and returns that color, rather
 //than accumulating the color properly
-#define ISO_THRESHOLD .3
+// #define ISO_THRESHOLD .1
+float ISO_THRESHOLD = 0.3;
 
 //ray casting variables
 CAMERA* camera = NULL;
@@ -149,10 +150,10 @@ void vrc_accumulate(const RAY *ray,float t0, float t1, float *out)
              }
              //should accumulate colors here based on opacity values
              //just return the first value for now.
-             out[0] = tcol.x;
-             out[1] = tcol.y;
-             out[2] = tcol.z;
-             out[3] = tcol.w;
+             out[0] = tcol.x; // Cdst = Csrc + (1 - Asrc) Cds
+             out[1] = tcol.y; // Cdst = Csrc + (1 - Asrc) Cds
+             out[2] = tcol.z; // Cdst = Csrc + (1 - Asrc) Cds
+             out[3] = tcol.w; // Cdst = Csrc + (1 - Asrc) Cds
              return;
          }
          //march along ray by delta t

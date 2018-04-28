@@ -4,14 +4,14 @@
 #include "volraycaster.h"
 
 #define INITAL_DELTA_T .01
-#define INITIAL_MAX_STEPS 1000
+#define INITIAL_MAX_STEPS 100000
 #define INITIAL_MINTRANS .01
 #define INIT_RENDER_RATIO .25
 #define TF_LENGTH 1000
 #define MIN_TF_VAL 0.0
 #define MAX_TF_VAL 1.0
 //window title
-const char *win_title = "Garrett's Sample Viewer";
+const char *win_title = "VR Viewer";
 
 //current window dimensions
 int win_width = INIT_WIN_WIDTH;
@@ -45,6 +45,18 @@ GLuint colormap_tex;
 char *volfile;
 size_t volgridx,volgridy,volgridz;
 glm::vec3 voldim(1.0);
+
+// angle of rotation for the camera direction
+float angle = 0.0f;
+
+// actual vector representing the camera's direction
+float lx=0.0f,lz=-1.0f;
+
+// XZ position of the camera
+float x=0.0f, z=5.0f;
+
+float deltaAngle = 0.0f;
+int xOrigin = -1;
 
 void checkGL()
 {
@@ -196,8 +208,13 @@ main(int argc, char **argv)
     //set callback functions for GLUT rendering loop
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
-    glutMouseFunc(mouse);
-    glutMotionFunc(motion);
+
+    // here are the two new functions
+	  glutMouseFunc(mouse/*mouseButton*/);
+	  glutMotionFunc(motion/*mouseMove*/);
+
+    // glutMouseFunc(mouse);
+    // glutMotionFunc(motion);
     glutKeyboardFunc(key);
     glutIdleFunc(idle);
 
@@ -421,6 +438,36 @@ glm::vec3 spheremap(float x, float y)
     float z = 1-(x*x+y*y);
     z = z>0?sqrtf(z):0;
     return glm::vec3(x,y,z);
+}
+
+void mouseButton(int button, int state, int x, int y) {
+
+	// only start motion if the left button is pressed
+	if (button == GLUT_LEFT_BUTTON) {
+
+		// when the button is released
+		if (state == GLUT_UP) {
+			angle += deltaAngle;
+			xOrigin = -1;
+		}
+		else  {// state = GLUT_DOWN
+			xOrigin = x;
+		}
+	}
+}
+
+void mouseMove(int x, int y) {
+
+	// this will only be true when the left button is down
+	if (xOrigin >= 0) {
+
+		// update deltaAngle
+		deltaAngle = (x - xOrigin) * 0.001f;
+
+		// update camera's direction
+		lx = sin(angle + deltaAngle);
+		lz = -cos(angle + deltaAngle);
+	}
 }
 
 

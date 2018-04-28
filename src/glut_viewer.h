@@ -23,14 +23,14 @@
 
 
 //GLUT VIEWER Constants
-#define INIT_WIN_WIDTH 512
-#define INIT_WIN_HEIGHT 512
+#define INIT_WIN_WIDTH 1024
+#define INIT_WIN_HEIGHT 720
 
 
 /*
  *  Called after glut creates a new context.
  *  Sets any global variables, and initializes the OpenGL state.
- *  Also initializes any other modules 
+ *  Also initializes any other modules
  *
  * returns 0 on error, otherwise 1;
  */
@@ -41,24 +41,24 @@ int initialize();
 
 /*
  *  When the glut rendering loop has nothing else to do, the idle function
- *  is called repeatedly.  
+ *  is called repeatedly.
  *  For progressive or hierarchal rendering this is a great place
- *  to increase the resolution.  
- *  For in-situ visualiztion this is a great place to incrament the simulation. 
+ *  to increase the resolution.
+ *  For in-situ visualiztion this is a great place to incrament the simulation.
  */
 void idle();
 
 /*
- *  This functions is where the rendering calls should be made and 
- *  information is drawn to the "screen" 
+ *  This functions is where the rendering calls should be made and
+ *  information is drawn to the "screen"
  */
 void display();
 
 /*
  * This function is called when the screen size changes.  Usually any output
  * or render buffers need to be updated so that there size matches the new size
- * and aspect ratio matches the current screen size.  
- */ 
+ * and aspect ratio matches the current screen size.
+ */
 void reshape(int width, int height);
 
 /*
@@ -67,9 +67,11 @@ void reshape(int width, int height);
  */
 void key(unsigned char ch, int x, int y);
 
-/* 
+/*
  * This function handles button press/release from the mouse.
  */
+void mouseButton(int button, int state, int x, int y);
+void mouseMove(int x, int y);
 void mouse(int button, int state, int x, int y);
 
 /*
